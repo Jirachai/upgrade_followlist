@@ -15,7 +15,7 @@ while read -r pkg; do
     if [[ -n "$pkg" ]]; then
         echo "----------------------------------------" | tee -a "$LOG_FILE"
         echo "Upgrading package: $pkg" | tee -a "$LOG_FILE"
-        sudo apt install -y "$pkg" >> "$LOG_FILE" 2>&1
+        sudo apt install --only-upgrade -y "$pkg" >> "$LOG_FILE" 2>&1
         if [[ $? -eq 0 ]]; then
             echo "✔️  Success: $pkg" | tee -a "$LOG_FILE"
         else
